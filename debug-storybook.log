@@ -1,0 +1,17 @@
+[19:26:34.427] [INFO] storybook v10.2.0-alpha.1
+[19:26:34.872] [DEBUG] Getting package.json info for P:/storybook-addon-docs-html/package.json...
+[19:26:35.145] [INFO] Starting...
+[19:26:35.273] [ERROR] [38;2;241;97;97mError: Build failed with 1 error:
+node_modules/.cache/storybook/1c3385a5d25e538d10b518b310c74d3ca2690b6aaffeadccd74da79736171f86/sb-manager/2/manager-bundle.js:1:7: ERROR: Could not resolve "P:/storybook-addon-docs-html/dist/manager.js"[39m
+    at failureErrorWithLog (.\node_modules\esbuild\lib\main.js:1467:15)
+    at .\node_modules\esbuild\lib\main.js:926:25
+    at runOnEndCallbacks (.\node_modules\esbuild\lib\main.js:1307:45)
+    at buildResponseToResult (.\node_modules\esbuild\lib\main.js:924:7)
+    at .\node_modules\esbuild\lib\main.js:951:16
+    at responseCallbacks.<computed> (.\node_modules\esbuild\lib\main.js:603:9)
+    at handleIncomingPacket (.\node_modules\esbuild\lib\main.js:658:12)
+    at Socket.readFromStdout (.\node_modules\esbuild\lib\main.js:581:7)
+    at Socket.emit (node:events:508:28)
+    at addChunk (node:internal/streams/readable:559:12)
+[19:26:35.275] [WARN] Broken build, fix the error above.
+You may need to refresh the browser.
