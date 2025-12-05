@@ -10,7 +10,7 @@ import { useStoryHtml, usePrettyHtml, useStyles } from './hooks';
 export function withHtml(storyFn: StoryFunction<Renderer>, context: StoryContext) {
   const emit = useChannel({});
   const params: Parameters = context.parameters[PARAM_KEY] || {};
-  useStyles('decorator', context.viewMode);
+  useStyles(params);
 
   // retrieve html
   let html = useStoryHtml(storyFn, context, params);
@@ -27,6 +27,8 @@ export function withHtml(storyFn: StoryFunction<Renderer>, context: StoryContext
 
   // set html for the docs canvas story
   useEffect(() => {
+    if (context.viewMode !== 'docs') return;
+
     setStoryCanvasHtml(context.componentId, context.id, prettyHtml, params);
   }, [prettyHtml]);
 

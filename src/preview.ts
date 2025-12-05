@@ -20,17 +20,21 @@ import { withGlobals } from './withGlobals';
 import { withRoundTrip } from './withRoundTrip';
 import { withHtml } from './withHtml';
 import { canvasAction } from './canvas-action';
+// import './styles.module.css';
 
 /**
  * Note: if you want to use JSX in this file, rename it to `preview.tsx`
  * and update the entry prop in tsup.config.ts to use "src/preview.tsx",
  */
-
 const preview: ProjectAnnotations<Renderer> = {
   decorators: [withGlobals, withRoundTrip, withHtml],
   parameters: {
     [PARAM_KEY]: {
-      title: 'CODE',
+      panelTitle: 'CODE',
+      canvasToggleText: {
+        opened: 'Hide CODE',
+        closed: 'Show CODE',
+      },
       // retrieveHtml: (storyFn: StoryFunction<Renderer>, context: StoryContext) => {
       //   return '<p>No HTML retrieved yet. Please make sure to run this in a story.</p>';
       // },

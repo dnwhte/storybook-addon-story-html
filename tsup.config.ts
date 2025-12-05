@@ -28,7 +28,7 @@ export default defineConfig(async () => {
     treeshake: true,
     splitting: true,
     minify: true,
-
+    injectStyle: true,
     /*
      The following packages are provided by Storybook and should always be externalized
      Meaning they shouldn't be bundled with the addon, and they shouldn't be regular dependencies either
@@ -49,7 +49,6 @@ export default defineConfig(async () => {
       entry: managerEntries,
       platform: 'browser',
       target: 'esnext', // we can use esnext for manager entries since Storybook will bundle the addon's manager entries again anyway
-      // injectStyle: false,
     });
   }
 

@@ -1,8 +1,10 @@
 import { type StoryContext, type StoryFn } from '@storybook/react-vite';
 
 export interface Parameters {
+  theme?: string;
   root?: string;
-  title?: string;
+  panelTitle?: string;
+  canvasToggleText?: { opened: string; closed: string };
   retrieveHtml?: (StoryFn: StoryFn, context: StoryContext) => string | Promise<string>;
   transform?: (code: string) => string | Promise<string>;
 }

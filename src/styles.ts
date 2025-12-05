@@ -10,7 +10,7 @@ export default function () {
     .docs-story-html__src {
         padding: 20px;
         margin: 0;
-        min-height: 200px;
+        /* min-height: 200px; */
         max-height: 40vh;
         overflow: auto;
         font-family:

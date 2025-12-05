@@ -1,5 +1,5 @@
 // import "@highlightjs/cdn-assets/styles/shades-of-purple.min.css";
-// import 'highlight.js/styles/github.css';
+// import 'highlight.js/styles/github-dark-dimmed.css';
 // import './_styles.css';
 import { COPIED_TIMEOUT } from './constants';
 import type { Parameters } from './types';
@@ -13,6 +13,7 @@ export function setStoryCanvasHtml(componentId: string, storyId: string, html: s
   const data = storyData ? { ...storyData, html: html } : { storyId: storyId, params: params, html: html };
 
   instances.set(storyId, data);
+  ensureToggleButtonTextExists(storyId, params);
 
   if (storyData?.htmlContainer) {
     updateHtmlView(storyData.htmlContainer, html);
@@ -22,6 +23,13 @@ export function setStoryCanvasHtml(componentId: string, storyId: string, html: s
 export function updateHtmlView(el: HTMLElement, html: string) {
   el.innerHTML = generateInnerHtml(html);
   bindCopyButton(el);
+}
+
+function ensureToggleButtonTextExists(storyId: string, params: Parameters) {
+  const button = document.querySelector(`#anchor--${storyId} .docs-story > :last-child button:empty`); // FIXME: this is a hacky way to find the button. There's no guarantee this will actually be our button
+  if (button) {
+    button.textContent = params.canvasToggleText?.closed || 'Show HTML';
+  }
 }
 
 /**
@@ -40,8 +48,9 @@ function createHtmlContainer(storyId: string, story: Element, html: string) {
   const div = document.createElement('div');
   div.id = `html-viewer--${storyId}`;
   div.classList.add('docs-story-html');
+  div.classList.add('hljs');
   div.innerHTML = generateInnerHtml(html);
-  story.after(div);
+  story.querySelector('.docs-story')?.after(div);
 
   return div;
 }
@@ -57,7 +66,7 @@ function initHtmlView(button: HTMLElement) {
   }
 
   const storyHtml = getStoryHtml(storyId);
-  button.textContent = `Hide ${storyData.params.title || 'HTML'}`;
+  button.textContent = storyData.params.canvasToggleText.opened || 'Hide HTML';
   button.dataset.storyId = storyId;
 
   const htmlContainer = createHtmlContainer(storyId, story, storyHtml);
@@ -95,7 +104,7 @@ function bindCopyButton(container: HTMLElement) {
 
 function generateInnerHtml(html: string) {
   return `
-		<pre class="docs-story-html__src hljs"><code>${html}</code></pre>
+		<pre class="docs-story-html__src"><code>${html}</code></pre>
 		<button class="docs-story-html__copy-btn" title="Copy to clipboard" aria-label="Copy to clipboard">
 			Copy
 		</button>
@@ -110,9 +119,8 @@ function getStoryHtml(storyId: string) {
 }
 
 function reset(button: HTMLElement) {
-  button.textContent = 'Show HTML';
-
   const instance = instances.get(button.dataset.storyId);
+  button.textContent = instance?.params.canvasToggleText.closed || 'Show HTML';
 
   if (instance) {
     instance.htmlContainer?.remove();
@@ -137,7 +145,6 @@ async function handleOnClick(e: any) {
 }
 
 export const canvasAction = {
-  // TODO: How to access config value here?
-  title: 'Show HTML',
+  title: '', // FIXME: Find a better way to do this. Left blank to use default from params later
   onClick: handleOnClick,
 };

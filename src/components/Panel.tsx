@@ -3,29 +3,50 @@ import type { CodeUpdateData, Parameters, Result } from 'src/types';
 import { AddonPanel } from 'storybook/internal/components';
 import { Button, Placeholder, TabsState } from 'storybook/internal/components';
 import { useChannel } from 'storybook/manager-api';
+// import './styles.module.css';
+
 // import '@highlightjs/cdn-assets/styles/shades-of-purple.min.css';
 // import 'highlight.js/styles/shades-of-purple.css';
-// import 'highlight.js/styles/github.css';
+// import 'highlight.js/styles/github-dark-dimmed.css';
 
 import { COPIED_TIMEOUT, EVENTS } from '../constants';
 import { useStyles } from 'src/hooks';
-
+// import { useStyles } from 'src/hooks';
 interface PanelProps {
   active?: boolean;
+}
+interface PanelContentProps {
+  data: CodeUpdateData;
 }
 
 export const Panel: React.FC<PanelProps> = memo(function MyPanel(props: PanelProps) {
   const [data, setData] = useState<CodeUpdateData>();
-  const preRef = React.useRef<HTMLPreElement>(null);
-  const btnRef = React.useRef<HTMLButtonElement>(null);
-
-  useStyles('panel');
 
   useChannel({
     [EVENTS.CODE_UPDATE]: (data) => {
       setData(data);
     },
   });
+
+  return (
+    <AddonPanel active={props.active ?? false}>
+      {data?.html ? (
+        <PanelContent data={data} />
+      ) : (
+        <Placeholder>
+          <Fragment>No HTML code available for this story.</Fragment>
+        </Placeholder>
+      )}
+    </AddonPanel>
+  );
+});
+
+function PanelContent(props: PanelContentProps) {
+  const preRef = React.useRef<HTMLPreElement>(null);
+  const btnRef = React.useRef<HTMLButtonElement>(null);
+  const { data } = props;
+
+  useStyles(data.params);
 
   function copyToClipboard() {
     if (!btnRef.current || !preRef.current || !navigator.clipboard) return;
@@ -47,30 +68,22 @@ export const Panel: React.FC<PanelProps> = memo(function MyPanel(props: PanelPro
   }
 
   return (
-    <AddonPanel active={props.active ?? false}>
-      {data?.html ? (
-        <div className="docs-story-html">
-          <pre ref={preRef} className="docs-story-html__src hljs">
-            <code dangerouslySetInnerHTML={{ __html: data.html }} />
-          </pre>
-          <button
-            ref={btnRef}
-            className="docs-story-html__copy-btn"
-            title="Copy to clipboard"
-            aria-label="Copy to clipboard"
-            onClick={copyToClipboard}
-          >
-            Copy
-          </button>
-        </div>
-      ) : (
-        <Placeholder>
-          <Fragment>No HTML code available for this story.</Fragment>
-        </Placeholder>
-      )}
-    </AddonPanel>
+    <div className="docs-story-html">
+      <pre ref={preRef} className="docs-story-html__src hljs">
+        <code dangerouslySetInnerHTML={{ __html: data.html }} />
+      </pre>
+      <button
+        ref={btnRef}
+        className="docs-story-html__copy-btn"
+        title="Copy to clipboard"
+        aria-label="Copy to clipboard"
+        onClick={copyToClipboard}
+      >
+        Copy
+      </button>
+    </div>
   );
-});
+}
 
 // import React, { Fragment, memo, useCallback, useState } from 'react';
 // import type { Result } from 'src/types';

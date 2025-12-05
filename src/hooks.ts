@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react';
 import type { Renderer, PartialStoryFn as StoryFunction } from 'storybook/internal/types';
 import { type StoryContext } from '@storybook/react-vite';
 import type { Parameters } from './types';
-import { addStyles, clearStyles } from './helpers';
+import { global } from '@storybook/global';
+import { addStyles, clearStyles, injectThemeStylesheet } from './helpers';
 import stylesCSS from './styles';
 import { ADDON_ID } from './constants';
 
@@ -60,16 +61,22 @@ export function usePrettyHtml(html: string) {
   return prettyHtml;
 }
 
-export function useStyles(location: 'decorator' | 'panel', viewMode?: string) {
-  useEffect(() => {
-    if (location === 'decorator' && viewMode !== 'docs') return; // don't load for story if not docs view
+// export function useStyles(location: 'decorator' | 'panel', viewMode?: string) {
+//   useEffect(() => {
+//     if (location === 'decorator' && viewMode !== 'docs') return; // don't load for story if not docs view
 
-    const selector = ADDON_ID + '-styles';
-    // import('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css');
-    addStyles(selector, stylesCSS());
+//     const selector = ADDON_ID + '-styles';
+//     // import('https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.11.1/styles/default.min.css');
+//     addStyles(selector, stylesCSS());
 
-    return () => {
-      clearStyles(selector);
-    };
-  }, []);
+//     return () => {
+//       clearStyles(selector);
+//     };
+//   }, []);
+// }
+
+export function useStyles(params: Parameters) {
+  import('./styles/styles.css');
+
+  params.theme ? injectThemeStylesheet(params.theme) : import('./styles/default-hljs-theme.css');
 }
