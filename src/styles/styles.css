@@ -43,21 +43,35 @@
 =============================================*/
 .docs-story-html__copy-btn {
   position: absolute;
-  top: 10px;
-  right: 18px;
-  padding: 5px 10px;
-  font-size: 12px;
-  background-color: #837dff;
-  color: white;
+  bottom: 0px;
+  right: 0px;
+  z-index: 1;
+  margin: 0px 0px 0px -1px;
   border: none;
-  border-radius: 8px;
+  padding: 4px 10px;
   cursor: pointer;
-  opacity: 0.8;
-  transition: opacity 0.3s;
+  color: rgb(201, 204, 207);
+  background: #050506;
+  font-size: 12px;
+  line-height: 16px;
+  font-family:
+    'Nunito Sans',
+    -apple-system,
+    '.SFNSText-Regular',
+    'San Francisco',
+    BlinkMacSystemFont,
+    'Segoe UI',
+    'Helvetica Neue',
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-weight: 700;
+  border-radius: 4px 0px 0px;
 }
 
-.docs-story-html__copy-btn:hover {
-  opacity: 1;
+.docs-story-html__copy-btn:focus {
+  box-shadow: rgb(71, 157, 255) 0px -3px 0px 0px inset;
+  outline: none 0px;
 }
 /*=====  End of Copy Button  ======*/
 
