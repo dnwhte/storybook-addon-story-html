@@ -1,7 +1,4 @@
-// import "@highlightjs/cdn-assets/styles/shades-of-purple.min.css";
-// import 'highlight.js/styles/github-dark-dimmed.css';
-// import './_styles.css';
-import { COPIED_TIMEOUT } from './constants';
+import { copyToClipboard } from './helpers';
 import type { Parameters } from './types';
 
 const instances = new Map();
@@ -25,11 +22,19 @@ export function updateHtmlView(el: HTMLElement, html: string) {
   bindCopyButton(el);
 }
 
+// FIXME: this is a hacky way to find the button and set the default text.
+// There's no guarantee this will actually be our button if user's add their own additionalActions
+// Ideally we could access the user's configured parameters and set the text in the title on init.
 function ensureToggleButtonTextExists(storyId: string, params: Parameters) {
-  const button = document.querySelector(`#anchor--${storyId} .docs-story > :last-child button:empty`); // FIXME: this is a hacky way to find the button. There's no guarantee this will actually be our button
+  const button = document.querySelector(`#anchor--${storyId} .docs-story > :last-child button:empty`);
   if (button) {
     button.textContent = params.canvasToggleText?.closed || 'Show HTML';
   }
+}
+
+export function removeCanvasToggleButton(storyId: string) {
+  const button = document.querySelector(`#anchor--${storyId} .docs-story > :last-child button:empty`);
+  button?.remove();
 }
 
 /**
@@ -86,17 +91,7 @@ function bindCopyButton(container: HTMLElement) {
       const codeElement = container.querySelector('.docs-story-html__src');
       if (codeElement) {
         const textToCopy = codeElement.textContent || '';
-        navigator.clipboard
-          .writeText(textToCopy)
-          .then(() => {
-            copyBtn.textContent = 'Copied!';
-            setTimeout(() => {
-              copyBtn.textContent = 'Copy';
-            }, COPIED_TIMEOUT);
-          })
-          .catch((err) => {
-            console.error('Failed to copy text: ', err);
-          });
+        copyToClipboard(textToCopy, copyBtn);
       }
     });
   }
@@ -145,6 +140,6 @@ async function handleOnClick(e: any) {
 }
 
 export const canvasAction = {
-  title: '', // FIXME: Find a better way to do this. Left blank to use default from params later
+  title: '', // FIXME: Find a better way to do this. Left blank to use in ensureToggleButtonTextExists later
   onClick: handleOnClick,
 };
