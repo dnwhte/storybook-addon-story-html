@@ -10,7 +10,10 @@ const preview: Preview = {
       //   opened: 'Hide HTML',
       //   closed: 'Show HTML',
       // },
-      // root: '#my-custom-container',
+      // root: '#wrapper',
+      // root: (storyFn: StoryFunction<Renderer>, context: StoryContext) => {
+      //   return '#test';
+      // },
       // theme: 'shades-of-purple',
       // disable: false,
       // retrieveHtml: (storyFn: StoryFunction<Renderer>, context: StoryContext) => {
@@ -18,7 +21,13 @@ const preview: Preview = {
       //   return renderedHtml;
       // },
       // transform: function (code: string) {
-      //   return code;
+      //   return `${code}`;
+      // },
+      // prettierOptions: {
+      //   tabs: true,
+      //   tabWidth: 2,
+      //   bracketSameLine: true,
+      //   endOfLine: 'lf',
       // },
     },
     controls: {

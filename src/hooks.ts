@@ -9,7 +9,7 @@ export function useStoryHtml(storyFn: StoryFunction<Renderer>, context: StoryCon
   const isInDocs = context.viewMode === 'docs';
 
   function getRootSelector() {
-    const tail = ` ${params.root || ''}`;
+    const tail = ` ${(typeof params.root === 'function' ? params.root(storyFn, context) : params.root) || ''}`;
     const selector = isInDocs
       ? `[id*="story--${context.id}"][id*="-inner"]${tail}`
       : `#storybook-root${tail}, #root${tail}`;
@@ -19,9 +19,8 @@ export function useStoryHtml(storyFn: StoryFunction<Renderer>, context: StoryCon
 
   function retrieveHtmlFromDom() {
     const selector = getRootSelector();
-    const rootEl = document.querySelector(selector);
-
-    let code: string = rootEl ? rootEl.innerHTML : `${selector} not found.`;
+    const el = document.querySelector(selector);
+    const code = el ? el.innerHTML : `${selector} not found.`;
 
     return code;
   }
@@ -47,16 +46,21 @@ export function useStoryHtml(storyFn: StoryFunction<Renderer>, context: StoryCon
   return html;
 }
 
-export function usePrettyHtml(html: string) {
+export function usePrettyHtml(html: string, params: Parameters) {
   const [prettyHtml, setPrettyHtml] = useState('');
 
   useEffect(() => {
     const worker = new Worker(new URL('./html.worker', import.meta.url), { type: 'module' });
-    worker.postMessage({ code: html });
-    worker.onmessage = function (event) {
-      const code = event.data.code;
-      setPrettyHtml(code);
-    };
+
+    try {
+      worker.postMessage({ code: html, prettierOptions: params.prettierOptions });
+      worker.onmessage = function (event) {
+        const code = event.data.code;
+        setPrettyHtml(code);
+      };
+    } catch (e) {
+      console.error(e);
+    }
 
     return () => {
       worker.terminate();
