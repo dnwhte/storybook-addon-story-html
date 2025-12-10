@@ -7,7 +7,7 @@ import type { Parameters } from './types';
 import { useStoryHtml, usePrettyHtml, useStyles } from './hooks';
 
 export function withHtml(storyFn: StoryFunction<Renderer>, context: StoryContext) {
-  const params: Parameters = context.parameters[PARAM_KEY] || {};
+  const params: Parameters = context.parameters[PARAM_KEY];
 
   if (params?.disable) {
     removeCanvasToggleButton(context.id);
