@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { type StoryContext } from '@storybook/react-vite';
-import type { Renderer, PartialStoryFn as StoryFunction } from 'storybook/internal/types';
+import type { Renderer, StoryContext, PartialStoryFn as StoryFunction } from 'storybook/internal/types';
 import { useChannel } from 'storybook/preview-api';
 import { EVENTS, PARAM_KEY } from './constants';
 import { removeCanvasToggleButton, setStoryCanvasHtml } from './canvas-action';

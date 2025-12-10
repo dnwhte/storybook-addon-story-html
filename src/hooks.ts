@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
-import type { Renderer, PartialStoryFn as StoryFunction } from 'storybook/internal/types';
-import { type StoryContext } from '@storybook/react-vite';
+import type { Renderer, StoryContext, PartialStoryFn as StoryFunction } from 'storybook/internal/types';
 import type { Parameters } from './types';
 import { injectThemeStylesheet } from './helpers';
 
 export function useStoryHtml(storyFn: StoryFunction<Renderer>, context: StoryContext, params: Parameters) {
   const [html, setHtml] = useState('');
   const isInDocs = context.viewMode === 'docs';
+  const retrievedHtml = typeof params.retrieveHtml === 'function' ? params.retrieveHtml(storyFn, context) : null; // positioned here (outside the useEffect) to avoid invalid hook errors in the retrieveHtml function
 
   function getRootSelector() {
     const tail = ` ${(typeof params.root === 'function' ? params.root(storyFn, context) : params.root) || ''}`;
@@ -27,7 +27,7 @@ export function useStoryHtml(storyFn: StoryFunction<Renderer>, context: StoryCon
 
   useEffect(() => {
     const timer = setTimeout(async () => {
-      let code = params.retrieveHtml ? await params.retrieveHtml(storyFn, context) : retrieveHtmlFromDom();
+      let code = (await retrievedHtml) || retrieveHtmlFromDom() || '';
 
       if (typeof params.transform === 'function') {
         try {

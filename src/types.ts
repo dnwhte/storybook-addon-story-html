@@ -1,5 +1,5 @@
-import { type StoryContext, type StoryFn } from '@storybook/react-vite';
 import type { Options } from 'prettier';
+import type { StoryContext, StoryFn } from 'storybook/internal/types';
 
 export interface Parameters {
   root?: string | ((StoryFn: StoryFn, context: StoryContext) => string);
