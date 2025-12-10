@@ -74,6 +74,10 @@ export function useStyles(params: Parameters) {
   useEffect(() => {
     import('./styles/styles.css');
 
-    params.theme ? injectThemeStylesheet(params.theme) : import('./styles/default-hljs-theme.css');
+    if (params.theme) {
+      injectThemeStylesheet(params.theme);
+    } else {
+      import('./styles/default-hljs-theme.css');
+    }
   }, []);
 }

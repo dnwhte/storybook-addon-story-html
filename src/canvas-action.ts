@@ -128,7 +128,7 @@ function toggleOpenState(el: HTMLElement) {
   return el.dataset.isOpen === 'true';
 }
 
-async function handleOnClick(e: any) {
+async function handleOnClick(e: MouseEvent) {
   const button = e.target as HTMLElement;
   const isOpen = toggleOpenState(button);
 

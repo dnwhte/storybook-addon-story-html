@@ -4,7 +4,7 @@ import { ADDON_ID, PANEL_ID, PARAM_KEY } from './constants';
 import { Panel } from './components/Panel';
 import type { Parameters } from './types';
 
-addons.register(ADDON_ID, (api) => {
+addons.register(ADDON_ID, () => {
   addons.add(PANEL_ID, {
     type: types.PANEL,
     title: () => {

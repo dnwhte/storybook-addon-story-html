@@ -2,10 +2,9 @@ import hljs from 'highlight.js';
 import xml from 'highlight.js/lib/languages/xml';
 import { format } from 'prettier/standalone';
 import * as parserHtml from 'prettier/plugins/html';
-import type { Parameters } from './types';
 import type { Options } from 'prettier';
 
-const ctx: Worker = self as any;
+const ctx: Worker = self as unknown as Worker;
 hljs.registerLanguage('xml', xml);
 
 ctx.onmessage = async (event) => {

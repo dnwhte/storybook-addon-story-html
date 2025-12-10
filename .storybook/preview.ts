@@ -1,6 +1,7 @@
-import type { Preview, StoryContext, StoryFn } from '@storybook/react-vite';
-import { renderToStaticMarkup } from 'react-dom/server';
-import type { Renderer, PartialStoryFn as StoryFunction } from 'storybook/internal/types';
+import type { Preview } from '@storybook/react-vite';
+// import type { StoryContext, StoryFn } from '@storybook/react-vite';
+// import { renderToStaticMarkup } from 'react-dom/server';
+// import type { Renderer, PartialStoryFn as StoryFunction } from 'storybook/internal/types';
 
 const preview: Preview = {
   parameters: {
