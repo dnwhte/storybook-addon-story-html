@@ -1,17 +1,6 @@
 name: Release
 
-on:
-  push:
-    branches: [main]
-    paths-ignore:
-      - 'CHANGELOG.md'
-      - 'LICENSE'
-  pull_request:
-    types:
-      - closed
-    branches:
-      - main
-  workflow_dispatch:
+on: [push]
 
 jobs:
   release:
