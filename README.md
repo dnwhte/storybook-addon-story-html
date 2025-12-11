@@ -48,11 +48,11 @@ Example `.storybook/preview.ts`:
 import type { Preview } from '@storybook/react-vite';
 
 const preview: Preview = {
-    parameters: {
-        storyHtml: {
-            // customize options here (see Parameters below)
-        },
-    },
+	parameters: {
+		storyHtml: {
+			// customize options here (see Parameters below)
+		},
+	},
 };
 
 export default preview;
@@ -87,21 +87,21 @@ Example with several options:
 
 ```js
 const preview: Preview = {
-    parameters: {
-        storyHtml: {
-            panelTitle: 'Markup',
-            canvasToggleText: {
-                opened: 'Hide Markup',
-                closed: 'Show Markup',
-            },
-            root: '.component-wrapper',
-            theme: 'shades-of-purple',
-            prettierOptions: {
-                tabWidth: 2,
-                useTabs: false
-            },
-        },
-    },
+	parameters: {
+		storyHtml: {
+			panelTitle: 'Markup',
+			canvasToggleText: {
+				opened: 'Hide Markup',
+				closed: 'Show Markup',
+			},
+			root: '.component-wrapper',
+			theme: 'shades-of-purple',
+			prettierOptions: {
+				tabWidth: 2,
+				useTabs: false
+			},
+		},
+	},
 };
 ```
 
@@ -139,11 +139,11 @@ export default {
 import { renderToStaticMarkup } from 'react-dom/server';
 
 const preview: Preview = {
-    parameters: {
-        storyHtml: {
-            retrieveHtml: (storyFn, context) => renderToStaticMarkup(storyFn(context)),
-        },
-    },
+	parameters: {
+		storyHtml: {
+			retrieveHtml: (storyFn, context) => renderToStaticMarkup(storyFn(context)),
+		},
+	},
 };
 ```
 
