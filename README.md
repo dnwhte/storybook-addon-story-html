@@ -30,11 +30,11 @@ Add the addon to your Storybook configuration in `.storybook/main.js`:
 
 ```js
 const config: StorybookConfig = {
-  // ...rest of config
-  addons: [
-    'storybook-addon-story-html',
-    // other addons...
-  ],
+	// ...rest of config
+	addons: [
+		'storybook-addon-story-html',
+		// other addons...
+	],
 };
 ```
 
