@@ -8,7 +8,7 @@ jobs:
     if: "!contains(github.event.head_commit.message, 'ci skip') && !contains(github.event.head_commit.message, 'skip ci') && github.repository != 'storybookjs/addon-kit'"
     permissions:
       id-token: write # Required for OIDC
-      contents: read
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
