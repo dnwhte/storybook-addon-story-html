@@ -8,17 +8,18 @@ export function useStoryHtml(storyFn: StoryFunction<Renderer>, context: StoryCon
   const isInDocs = context.viewMode === 'docs';
   const retrievedHtml = typeof params.retrieveHtml === 'function' ? params.retrieveHtml(storyFn, context) : null; // positioned here (outside the useEffect) to avoid invalid hook errors in the retrieveHtml function
 
-  function getRootSelector() {
-    const tail = ` ${(typeof params.root === 'function' ? params.root(storyFn, context) : params.root) || ''}`;
+  // NOTE: This selector depends on Storybook's internal DOM structure and may break if Storybook changes its markup.
+  function computeRootSelector() {
+    const rootSuffix = ` ${(typeof params.root === 'function' ? params.root(storyFn, context) : params.root) || ''}`;
     const selector = isInDocs
-      ? `[id*="story--${context.id}"][id*="-inner"]${tail}`
-      : `#storybook-root${tail}, #root${tail}`;
+      ? `[id*="story--${context.id}"][id*="-inner"]${rootSuffix ? rootSuffix : ''}`
+      : `#storybook-root${rootSuffix ? rootSuffix : ''}, #root${rootSuffix ? rootSuffix : ''}`;
 
     return selector.trim();
   }
 
   function retrieveHtmlFromDom() {
-    const selector = getRootSelector();
+    const selector = computeRootSelector();
     const el = document.querySelector(selector);
     const code = el ? el.innerHTML : `${selector} not found.`;
 

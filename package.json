@@ -109,7 +109,7 @@
     ]
   },
   "storybook": {
-    "displayName": "Docs HTML Preview",
+    "displayName": "Story HTML",
     "supportedFrameworks": [
       "react",
       "vue",

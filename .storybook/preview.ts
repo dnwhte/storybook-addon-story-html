@@ -5,7 +5,7 @@ import type { Preview } from '@storybook/react-vite';
 
 const preview: Preview = {
   parameters: {
-    docsHtml: {
+    storyHtml: {
       // panelTitle: 'HTML',
       // canvasToggleText: {
       //   opened: 'Hide HTML',

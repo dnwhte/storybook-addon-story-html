@@ -1,4 +1,4 @@
-# Storybook Addon - Story HTML
+# Storybook Addon | Story HTML
 
 Displays the story's compiled HTML in both the addon panel and autodocs canvas.
 
