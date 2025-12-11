@@ -74,7 +74,7 @@ export default {
 
 ## Parameters
 
-- **`root`**: `string | (storyFn, context) => string` — Selector or a function returning a selector to specify the root element to extract HTML from. Example: `'#root'` or `(storyFn, context) => '#app'`.
+- **`root`**: `string | (storyFn, context) => string` — Selector or a function returning a selector to specify the root element to extract HTML from. Example: `'.component-wrapper'` or `(storyFn, context) => { const root = getMyDynamicRoot(storyFn, context); return root; }`.
 - **`panelTitle`**: `string` — Title shown in the addon panel. Default: `HTML`
 - **`canvasToggleText`**: `{ opened: string; closed: string }` — Custom text for the toggle that shows/hides the HTML overlay in the canvas. Default: `{ opened: 'Hide HTML'; closed: 'Show HTML' }`
 - **`theme`**: `string` — highlight.js theme name. (https://highlightjs.org/examples). Default: `github-dark-dimmed`
