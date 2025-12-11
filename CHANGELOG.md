@@ -1,3 +1,17 @@
+# v0.0.6 (Thu Dec 11 2025)
+
+#### ⚠️ Pushed to `main`
+
+- revert contents ([@dnwhte](https://github.com/dnwhte))
+- Merge remote-tracking branch 'origin/main' ([@dnwhte](https://github.com/dnwhte))
+- set contents: read ([@dnwhte](https://github.com/dnwhte))
+
+#### Authors: 1
+
+- Dan White ([@dnwhte](https://github.com/dnwhte))
+
+---
+
 # v0.0.5 (Thu Dec 11 2025)
 
 #### ⚠️ Pushed to `main`
