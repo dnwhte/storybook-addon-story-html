@@ -1,3 +1,15 @@
+# v1.0.0 (Thu Dec 11 2025)
+
+#### 💥 Breaking Change
+
+- Initial release [#1](https://github.com/dnwhte/storybook-addon-story-html/pull/1) ([@dnwhte](https://github.com/dnwhte))
+
+#### Authors: 1
+
+- Dan White ([@dnwhte](https://github.com/dnwhte))
+
+---
+
 # v0.0.8 (Thu Dec 11 2025)
 
 #### ⚠️ Pushed to `main`
