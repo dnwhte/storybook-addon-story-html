@@ -1,6 +1,6 @@
 {
 	"name": "storybook-addon-story-html",
-	"version": "0.0.7",
+	"version": "1.0.0.",
 	"description": "Displays the story's compiled HTML in both the addon panel and autodocs canvas.",
 	"keywords": [
 		"storybook-addon",
