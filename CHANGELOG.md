@@ -1,3 +1,17 @@
+# v1.0.3 (Fri Dec 12 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'develop' ([@dnwhte](https://github.com/dnwhte))
+- Clarifies default HTML retrieval method ([@dnwhte](https://github.com/dnwhte))
+- Merge branch 'main' into develop ([@dnwhte](https://github.com/dnwhte))
+
+#### Authors: 1
+
+- Dan White ([@dnwhte](https://github.com/dnwhte))
+
+---
+
 # v1.0.3 (Thu Dec 11 2025)
 
 #### ⚠️ Pushed to `main`
