@@ -79,7 +79,7 @@ export default {
 - **`canvasToggleText`**: `{ opened: string; closed: string }` — Custom text for the toggle that shows/hides the HTML overlay in the canvas. Default: `{ opened: 'Hide HTML'; closed: 'Show HTML' }`
 - **`theme`**: `string` — highlight.js theme name. (https://highlightjs.org/examples). Default: `github-dark-dimmed`
 - **`disable`**: `boolean` — Disable the addon when true.
-- **`retrieveHtml`**: `(storyFn, context) => string | Promise<string>` — Custom function to retrieve the HTML string for the story. Useful for server-side rendering or custom renderers.
+- **`retrieveHtml`**: `(storyFn, context) => string | Promise<string>` — Custom function to retrieve the HTML string for the story. Useful for server-side rendering or custom renderers. By default the markup is extracted from the DOM.
 - **`transform`**: `(code: string) => string | Promise<string>` — Transform the captured HTML (e.g., to post-process or wrap it) before display.
 - **`prettierOptions`**: `Prettier Options` — Formatting options passed to Prettier when formatting. (https://prettier.io/docs/options)
 
