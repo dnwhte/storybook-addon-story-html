@@ -4,6 +4,11 @@ Displays the story's compiled HTML in both the addon panel and the autodocs canv
 
 ![Preview](https://raw.githubusercontent.com/dnwhte/storybook-addon-story-html/main/image.gif)
 
+## Requirements
+
+- Storybook 9 or higher (lower versions have not been tested)
+- Node.js 18+
+
 ## Installation
 
 pnpm
