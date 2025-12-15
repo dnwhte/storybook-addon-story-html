@@ -1,3 +1,17 @@
+# v1.0.6 (Mon Dec 15 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'develop' ([@dnwhte](https://github.com/dnwhte))
+- Adds requirements section to README ([@dnwhte](https://github.com/dnwhte))
+- update icon ([@dnwhte](https://github.com/dnwhte))
+
+#### Authors: 1
+
+- Dan White ([@dnwhte](https://github.com/dnwhte))
+
+---
+
 # v1.0.5 (Sat Dec 13 2025)
 
 #### ⚠️ Pushed to `main`
