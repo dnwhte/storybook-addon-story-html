@@ -1,3 +1,16 @@
+# v1.0.8 (Tue Dec 16 2025)
+
+#### 🐛 Bug Fix
+
+- Merge develop branch [#4](https://github.com/dnwhte/storybook-addon-story-html/pull/4) ([@dnwhte](https://github.com/dnwhte))
+- Adds `waitForRender` parameter to delay HTML capture [#2](https://github.com/dnwhte/storybook-addon-story-html/pull/2) ([@dnwhte](https://github.com/dnwhte))
+
+#### Authors: 1
+
+- Dan White ([@dnwhte](https://github.com/dnwhte))
+
+---
+
 # v1.0.7 (Tue Dec 16 2025)
 
 #### 🐛 Bug Fix
