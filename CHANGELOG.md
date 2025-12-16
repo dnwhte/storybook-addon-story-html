@@ -1,3 +1,15 @@
+# v1.0.7 (Tue Dec 16 2025)
+
+#### 🐛 Bug Fix
+
+- Bump js-yaml from 4.1.0 to 4.1.1 [#3](https://github.com/dnwhte/storybook-addon-story-html/pull/3) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 1
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+
+---
+
 # v1.0.6 (Mon Dec 15 2025)
 
 #### ⚠️ Pushed to `main`
