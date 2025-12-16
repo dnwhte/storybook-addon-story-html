@@ -17,6 +17,7 @@ const preview: Preview = {
       // },
       // theme: 'shades-of-purple',
       // disable: false,
+      // waitForRender: 2000,
       // retrieveHtml: (storyFn: StoryFunction<Renderer>, context: StoryContext) => {
       //   const renderedHtml = renderToStaticMarkup(storyFn(context));
       //   return renderedHtml;

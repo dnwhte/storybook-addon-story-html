@@ -39,7 +39,7 @@ export function useStoryHtml(storyFn: StoryFunction<Renderer>, context: StoryCon
       }
 
       setHtml(code);
-    }, 0);
+    }, params.waitForRender || 0);
 
     return () => clearTimeout(timer);
   }, [context.args]);
