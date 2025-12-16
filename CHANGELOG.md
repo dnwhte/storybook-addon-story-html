@@ -1,3 +1,69 @@
+# v1.0.8 (Tue Dec 16 2025)
+
+#### 🐛 Bug Fix
+
+- Merge develop branch [#4](https://github.com/dnwhte/storybook-addon-story-html/pull/4) ([@dnwhte](https://github.com/dnwhte))
+- Adds `waitForRender` parameter to delay HTML capture [#2](https://github.com/dnwhte/storybook-addon-story-html/pull/2) ([@dnwhte](https://github.com/dnwhte))
+
+#### Authors: 1
+
+- Dan White ([@dnwhte](https://github.com/dnwhte))
+
+---
+
+# v1.0.7 (Tue Dec 16 2025)
+
+#### 🐛 Bug Fix
+
+- Bump js-yaml from 4.1.0 to 4.1.1 [#3](https://github.com/dnwhte/storybook-addon-story-html/pull/3) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 1
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+
+---
+
+# v1.0.6 (Mon Dec 15 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'develop' ([@dnwhte](https://github.com/dnwhte))
+- Adds requirements section to README ([@dnwhte](https://github.com/dnwhte))
+- update icon ([@dnwhte](https://github.com/dnwhte))
+
+#### Authors: 1
+
+- Dan White ([@dnwhte](https://github.com/dnwhte))
+
+---
+
+# v1.0.5 (Sat Dec 13 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'develop' ([@dnwhte](https://github.com/dnwhte))
+- Fix whitespace in readme ([@dnwhte](https://github.com/dnwhte))
+
+#### Authors: 1
+
+- Dan White ([@dnwhte](https://github.com/dnwhte))
+
+---
+
+# v1.0.3 (Fri Dec 12 2025)
+
+#### ⚠️ Pushed to `main`
+
+- Merge branch 'develop' ([@dnwhte](https://github.com/dnwhte))
+- Clarifies default HTML retrieval method ([@dnwhte](https://github.com/dnwhte))
+- Merge branch 'main' into develop ([@dnwhte](https://github.com/dnwhte))
+
+#### Authors: 1
+
+- Dan White ([@dnwhte](https://github.com/dnwhte))
+
+---
+
 # v1.0.3 (Thu Dec 11 2025)
 
 #### ⚠️ Pushed to `main`
