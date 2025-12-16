@@ -84,6 +84,7 @@ export default {
 - **`canvasToggleText`**: `{ opened: string; closed: string }` — Custom text for the toggle that shows/hides the HTML overlay in the canvas. Default: `{ opened: 'Hide HTML'; closed: 'Show HTML' }`
 - **`theme`**: `string` — highlight.js theme name. (https://highlightjs.org/examples). Default: `github-dark-dimmed`
 - **`disable`**: `boolean` — Disable the addon when true.
+- **`waitForRender`**: `number` — The timeout value (in milliseconds) that is used to ensure the DOM has finished loading. Default: `0`
 - **`retrieveHtml`**: `(storyFn, context) => string | Promise<string>` — Custom function to retrieve the HTML string for the story. Useful for server-side rendering or custom renderers. By default the markup is extracted from the DOM.
 - **`transform`**: `(code: string) => string | Promise<string>` — Transform the captured HTML (e.g., to post-process or wrap it) before display.
 - **`prettierOptions`**: `Prettier Options` — Formatting options passed to Prettier when formatting. (https://prettier.io/docs/options)
@@ -101,6 +102,7 @@ const preview: Preview = {
       },
       root: '.component-wrapper',
       theme: 'shades-of-purple',
+      waitForRender: 1000,
       prettierOptions: {
         tabWidth: 2,
         useTabs: false
@@ -155,7 +157,7 @@ const preview: Preview = {
 ## Notes & Troubleshooting
 
 - This addon relies heavily on Storybook's markup structure and class names. There is a possibility of conflicting with other addons/configurations.
-- The `root` parameter will not have an impact when utilizing a custom `retrieveHtml` function.
+- The `root` and `waitForRender` parameters will not have an impact when utilizing a custom `retrieveHtml` function.
 
 ## Contributing / Development
 

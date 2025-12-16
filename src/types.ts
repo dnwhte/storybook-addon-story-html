@@ -7,6 +7,7 @@ export interface Parameters {
   canvasToggleText?: { opened: string; closed: string };
   theme?: string;
   disable?: boolean;
+  waitForRender?: number;
   retrieveHtml?: (StoryFn: StoryFn, context: StoryContext) => string | Promise<string>;
   transform?: (code: string) => string | Promise<string>;
   prettierOptions?: Options;
