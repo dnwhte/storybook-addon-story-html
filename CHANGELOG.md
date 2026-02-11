@@ -1,3 +1,15 @@
+# v1.0.10 (Wed Feb 11 2026)
+
+#### 🐛 Bug Fix
+
+- Adds option to sync canvas toggles as tabs [#7](https://github.com/dnwhte/storybook-addon-story-html/pull/7) ([@dnwhte](https://github.com/dnwhte))
+
+#### Authors: 1
+
+- Dan White ([@dnwhte](https://github.com/dnwhte))
+
+---
+
 # v1.0.9 (Wed Feb 11 2026)
 
 #### 🐛 Bug Fix
