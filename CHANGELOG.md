@@ -1,3 +1,15 @@
+# v1.0.9 (Wed Feb 11 2026)
+
+#### 🐛 Bug Fix
+
+- Bump diff from 4.0.2 to 4.0.4 [#5](https://github.com/dnwhte/storybook-addon-story-html/pull/5) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 1
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+
+---
+
 # v1.0.8 (Tue Dec 16 2025)
 
 #### 🐛 Bug Fix
