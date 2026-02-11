@@ -37,7 +37,6 @@ function initToggleButton(storyId: string, params: Parameters) {
       const codeToggle = button.parentElement?.querySelector('.docblock-code-toggle') as HTMLElement | null;
 
       function handleCodeToggleClick() {
-        console.log('Code toggle clicked, checking if HTML view is open to close it.');
         if (button?.dataset.isOpen === 'true') {
           toggleOpenState(button);
           reset(button);
@@ -45,7 +44,6 @@ function initToggleButton(storyId: string, params: Parameters) {
       }
 
       function handleButtonClick() {
-        console.log('Canvas toggle clicked, checking if code view is open to close it.');
         if (codeToggle?.classList.contains('docblock-code-toggle--expanded')) {
           codeToggle.click();
         }
