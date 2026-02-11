@@ -5,6 +5,7 @@ export interface Parameters {
   root?: string | ((StoryFn: StoryFn, context: StoryContext) => string);
   panelTitle?: string;
   canvasToggleText?: { opened: string; closed: string };
+  syncCanvasTogglesAsTabs?: boolean;
   theme?: string;
   disable?: boolean;
   waitForRender?: number;

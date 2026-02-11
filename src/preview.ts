@@ -8,6 +8,7 @@ const preview: ProjectAnnotations<Renderer> = {
   parameters: {
     [PARAM_KEY]: {
       panelTitle: 'HTML',
+      syncCanvasTogglesAsTabs: true,
       canvasToggleText: {
         opened: 'Hide HTML',
         closed: 'Show HTML',
