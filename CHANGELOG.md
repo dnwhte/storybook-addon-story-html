@@ -1,3 +1,15 @@
+# v1.0.11 (Wed Feb 11 2026)
+
+#### 🐛 Bug Fix
+
+- Bump @isaacs/brace-expansion from 5.0.0 to 5.0.1 [#8](https://github.com/dnwhte/storybook-addon-story-html/pull/8) ([@dependabot[bot]](https://github.com/dependabot[bot]))
+
+#### Authors: 1
+
+- [@dependabot[bot]](https://github.com/dependabot[bot])
+
+---
+
 # v1.0.10 (Wed Feb 11 2026)
 
 #### 🐛 Bug Fix
