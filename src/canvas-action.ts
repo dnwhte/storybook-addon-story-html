@@ -10,7 +10,7 @@ export function setStoryCanvasHtml(componentId: string, storyId: string, html: s
   const data = storyData ? { ...storyData, html: html } : { storyId: storyId, params: params, html: html };
 
   instances.set(storyId, data);
-  ensureToggleButtonTextExists(storyId, params);
+  initToggleButton(storyId, params);
 
   if (storyData?.htmlContainer) {
     updateHtmlView(storyData.htmlContainer, html);
@@ -25,10 +25,35 @@ export function updateHtmlView(el: HTMLElement, html: string) {
 // FIXME: this is a hacky way to find the button and set the default text.
 // There's no guarantee this will actually be our button if user's add their own additionalActions
 // Ideally we could access the user's configured parameters and set the text in the title on init.
-function ensureToggleButtonTextExists(storyId: string, params: Parameters) {
-  const button = document.querySelector(`#anchor--${storyId} .docs-story > :last-child button:empty`);
+function initToggleButton(storyId: string, params: Parameters) {
+  const button = document.querySelector(
+    `#anchor--${storyId} .docs-story > :last-child button:empty`,
+  ) as HTMLElement | null;
+
   if (button) {
     button.textContent = params.canvasToggleText?.closed || 'Show HTML';
+
+    if (params?.syncCanvasTogglesAsTabs) {
+      const codeToggle = button.parentElement?.querySelector('.docblock-code-toggle') as HTMLElement | null;
+
+      function handleCodeToggleClick() {
+        console.log('Code toggle clicked, checking if HTML view is open to close it.');
+        if (button?.dataset.isOpen === 'true') {
+          toggleOpenState(button);
+          reset(button);
+        }
+      }
+
+      function handleButtonClick() {
+        console.log('Canvas toggle clicked, checking if code view is open to close it.');
+        if (codeToggle?.classList.contains('docblock-code-toggle--expanded')) {
+          codeToggle.click();
+        }
+      }
+
+      button.addEventListener('click', handleButtonClick);
+      codeToggle?.addEventListener('click', handleCodeToggleClick);
+    }
   }
 }
 
@@ -140,6 +165,6 @@ async function handleOnClick(e: MouseEvent) {
 }
 
 export const canvasAction = {
-  title: '', // FIXME: Find a better way to do this. Left blank to use in ensureToggleButtonTextExists later
+  title: '', // FIXME: Find a better way to do this. Left blank to use in initToggleButton later
   onClick: handleOnClick,
 };

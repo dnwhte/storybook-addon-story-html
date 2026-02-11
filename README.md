@@ -83,6 +83,7 @@ export default {
 - **`panelTitle`**: `string` — Title shown in the addon panel. Default: `HTML`
 - **`canvasToggleText`**: `{ opened: string; closed: string }` — Custom text for the toggle that shows/hides the HTML overlay in the canvas. Default: `{ opened: 'Hide HTML'; closed: 'Show HTML' }`
 - **`theme`**: `string` — highlight.js theme name. (https://highlightjs.org/examples). Default: `github-dark-dimmed`
+- **`syncCanvasTogglesAsTabs`**: `boolean` — Treat the HTML and code views as exclusive tabs (opening one closes the other). Default: `false`
 - **`disable`**: `boolean` — Disable the addon when true.
 - **`waitForRender`**: `number` — The timeout value (in milliseconds) that is used to ensure the DOM has finished loading. Default: `0`
 - **`retrieveHtml`**: `(storyFn, context) => string | Promise<string>` — Custom function to retrieve the HTML string for the story. Useful for server-side rendering or custom renderers. By default the markup is extracted from the DOM.
