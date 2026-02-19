@@ -1,3 +1,15 @@
+# v1.0.12 (Thu Feb 19 2026)
+
+#### 🏎 Performance
+
+- Debounces HTML formatting in canvas addon [#9](https://github.com/dnwhte/storybook-addon-story-html/pull/9) ([@dnwhte](https://github.com/dnwhte))
+
+#### Authors: 1
+
+- Dan White ([@dnwhte](https://github.com/dnwhte))
+
+---
+
 # v1.0.11 (Wed Feb 11 2026)
 
 #### 🐛 Bug Fix
