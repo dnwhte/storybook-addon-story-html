@@ -86,6 +86,7 @@ export default {
 - **`syncCanvasTogglesAsTabs`**: `boolean` — Treat the HTML and code views as exclusive tabs (opening one closes the other). Default: `false`
 - **`disable`**: `boolean` — Disable the addon when true.
 - **`waitForRender`**: `number` — The timeout value (in milliseconds) that is used to ensure the DOM has finished loading. Default: `0`
+- **`debounceDelay`**: `number` — Delay in milliseconds before formatting HTML to debounce rapid changes. Default: `300`
 - **`retrieveHtml`**: `(storyFn, context) => string | Promise<string>` — Custom function to retrieve the HTML string for the story. Useful for server-side rendering or custom renderers. By default the markup is extracted from the DOM.
 - **`transform`**: `(code: string) => string | Promise<string>` — Transform the captured HTML (e.g., to post-process or wrap it) before display.
 - **`prettierOptions`**: `Prettier Options` — Formatting options passed to Prettier when formatting. (https://prettier.io/docs/options)
