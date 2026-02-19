@@ -12,6 +12,13 @@ export interface Parameters {
   retrieveHtml?: (StoryFn: StoryFn, context: StoryContext) => string | Promise<string>;
   transform?: (code: string) => string | Promise<string>;
   prettierOptions?: Options;
+  debounceDelay?: number;
+}
+
+export interface PrettyHtmlState {
+  prettyHtml: string;
+  loading: boolean;
+  error: string | null;
 }
 
 export interface CodeUpdateData {

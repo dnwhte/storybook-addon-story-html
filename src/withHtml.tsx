@@ -25,7 +25,7 @@ function render(storyFn: StoryFunction<Renderer>, context: StoryContext, params:
   const html = useStoryHtml(storyFn, context, params);
 
   // prettify html
-  const prettyHtml = usePrettyHtml(html, params);
+  const { prettyHtml } = usePrettyHtml(html, params);
 
   // emit event to update addon panel
   emit(EVENTS.CODE_UPDATE, {
