@@ -4,12 +4,18 @@ import type { Parameters } from './types';
 const instances = new Map();
 let currentComponentId = '';
 
-export function setStoryCanvasHtml(componentId: string, storyId: string, html: string, params: Parameters) {
+export function setStoryCanvasHtml(
+  componentId: string,
+  storyId: string,
+  canvasId: string,
+  html: string,
+  params: Parameters,
+) {
   shouldResetInstances(componentId);
-  const storyData = instances.get(storyId);
+  const storyData = instances.get(canvasId);
   const data = storyData ? { ...storyData, html: html } : { storyId: storyId, params: params, html: html };
 
-  instances.set(storyId, data);
+  instances.set(canvasId, data);
   initToggleButton(storyId, params);
 
   if (storyData?.htmlContainer) {
@@ -17,7 +23,7 @@ export function setStoryCanvasHtml(componentId: string, storyId: string, html: s
   }
 }
 
-export function updateHtmlView(el: HTMLElement, html: string) {
+function updateHtmlView(el: HTMLElement, html: string) {
   el.innerHTML = generateInnerHtml(html);
   bindCopyButton(el);
 }
@@ -65,7 +71,7 @@ export function removeCanvasToggleButton(storyId: string) {
  * This ensures that HTML view state is isolated per component and we're not retaining old data.
  * Side effect: Updates currentComponentId and clears the instances map if a reset occurs.
  */
-export function shouldResetInstances(componentId: string) {
+function shouldResetInstances(componentId: string) {
   if (currentComponentId !== componentId) {
     currentComponentId = componentId;
     instances.clear();
@@ -84,23 +90,24 @@ function createHtmlContainer(storyId: string, story: Element, html: string) {
 }
 
 function initHtmlView(button: HTMLElement) {
+  const canvasId = button.closest('.docs-story')?.querySelector('[id^="story--"][id$="-inner"]')?.id;
   const story = button.closest('.sb-anchor');
   const storyId = story?.id.replace('anchor--', '');
-  const storyData = instances.get(storyId);
+  const storyData = instances.get(canvasId);
 
-  if (!storyId || !story || !storyData) {
+  if (!canvasId || !storyId || !story || !storyData) {
     console.error('Story or storyId not found for HTML view initialization.');
     return;
   }
 
-  const storyHtml = getStoryHtml(storyId);
+  const storyHtml = getStoryHtml(canvasId);
   button.textContent = storyData.params.canvasToggleText.opened || 'Hide HTML';
-  button.dataset.storyId = storyId;
+  button.dataset.canvasId = canvasId;
 
   const htmlContainer = createHtmlContainer(storyId, story, storyHtml);
   bindCopyButton(htmlContainer);
 
-  instances.set(storyId, {
+  instances.set(canvasId, {
     ...storyData,
     htmlContainer: htmlContainer,
   });
@@ -129,15 +136,15 @@ function generateInnerHtml(html: string) {
 	`;
 }
 
-function getStoryHtml(storyId: string) {
-  const storyData = instances.get(storyId);
+function getStoryHtml(canvasId: string) {
+  const storyData = instances.get(canvasId);
   if (!storyData) return '';
 
   return storyData.html;
 }
 
 function reset(button: HTMLElement) {
-  const instance = instances.get(button.dataset.storyId);
+  const instance = instances.get(button.dataset.canvasId);
   button.textContent = instance?.params.canvasToggleText.closed || 'Show HTML';
 
   if (instance) {
