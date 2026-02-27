@@ -38,7 +38,7 @@ function render(storyFn: StoryFunction<Renderer>, context: StoryContext, params:
   useEffect(() => {
     if (context.viewMode !== 'docs') return;
 
-    setStoryCanvasHtml(context.componentId, context.id, prettyHtml, params);
+    setStoryCanvasHtml(context.componentId, context.id, context.canvasElement.id, prettyHtml, params);
   }, [prettyHtml]);
 
   return storyFn();
