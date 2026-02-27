@@ -1,3 +1,15 @@
+# v1.0.13 (Fri Feb 27 2026)
+
+#### 🐛 Bug Fix
+
+- Fixes HTML view instance conflicts and debounces formatting [#13](https://github.com/dnwhte/storybook-addon-story-html/pull/13) ([@dnwhte](https://github.com/dnwhte))
+
+#### Authors: 1
+
+- Dan White ([@dnwhte](https://github.com/dnwhte))
+
+---
+
 # v1.0.12 (Thu Feb 19 2026)
 
 #### 🏎 Performance
