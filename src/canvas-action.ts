@@ -1,7 +1,14 @@
 import { copyToClipboard } from './helpers';
 import type { Parameters } from './types';
 
-const instances = new Map();
+type StoryData = {
+  storyId: string;
+  params: Parameters;
+  html: string;
+};
+
+const instances = new Map<string, StoryData>();
+const openContainers = new Map<HTMLElement, HTMLElement>();
 let currentComponentId = '';
 
 export function setStoryCanvasHtml(componentId: string, storyId: string, html: string, params: Parameters) {
@@ -12,9 +19,8 @@ export function setStoryCanvasHtml(componentId: string, storyId: string, html: s
   instances.set(storyId, data);
   initToggleButton(storyId, params);
 
-  if (storyData?.htmlContainer) {
-    updateHtmlView(storyData.htmlContainer, html);
-  }
+  const htmlContainers = document.querySelectorAll<HTMLElement>(`.docs-story-html[data-story-id="${storyId}"]`);
+  htmlContainers.forEach((container) => updateHtmlView(container, html));
 }
 
 export function updateHtmlView(el: HTMLElement, html: string) {
@@ -69,12 +75,13 @@ export function shouldResetInstances(componentId: string) {
   if (currentComponentId !== componentId) {
     currentComponentId = componentId;
     instances.clear();
+    openContainers.clear();
   }
 }
 
 function createHtmlContainer(storyId: string, story: Element, html: string) {
   const div = document.createElement('div');
-  div.id = `html-viewer--${storyId}`;
+  div.dataset.storyId = storyId;
   div.classList.add('docs-story-html');
   div.classList.add('hljs');
   div.innerHTML = generateInnerHtml(html);
@@ -99,11 +106,7 @@ function initHtmlView(button: HTMLElement) {
 
   const htmlContainer = createHtmlContainer(storyId, story, storyHtml);
   bindCopyButton(htmlContainer);
-
-  instances.set(storyId, {
-    ...storyData,
-    htmlContainer: htmlContainer,
-  });
+  openContainers.set(button, htmlContainer);
 }
 
 function bindCopyButton(container: HTMLElement) {
@@ -140,9 +143,9 @@ function reset(button: HTMLElement) {
   const instance = instances.get(button.dataset.storyId);
   button.textContent = instance?.params.canvasToggleText.closed || 'Show HTML';
 
-  if (instance) {
-    instance.htmlContainer?.remove();
-  }
+  const htmlContainer = openContainers.get(button);
+  htmlContainer?.remove();
+  openContainers.delete(button);
 }
 
 function toggleOpenState(el: HTMLElement) {
